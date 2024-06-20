@@ -1,0 +1,23 @@
+# Configuration in Pom.xml
+
+- **Pom.xml**: Maven project configuration file where project metadata, dependencies, and plugins are specified.
+- **Elements in Pom.xml**:
+  - **Group ID, Artifact ID, Version**: Essential project identifiers required for creating a JAR file.
+  - **Dependencies**: Section for specifying project dependencies, including external libraries.
+    - Multiple dependencies can be added within the `<dependencies>` tag.
+    - Dependencies can have their own transitive dependencies, automatically managed by Maven.
+  - **Plugins**: Optional section for configuring plugins to enhance project functionality.
+    - Plugins provide additional features such as compilation, testing, packaging, etc.
+    - Plugins can be added within the `<plugins>` tag, with configurations specified accordingly.
+- **Effective Pom**:
+  - **Definition**: Also known as super pom or parent pom, it represents the aggregated configuration of a Maven project.
+  - **Usage**: Maven internally uses the effective pom during project execution, incorporating both explicit configurations from Pom.xml and default configurations.
+  - **Accessing Effective Pom**:
+    - In IntelliJ IDEA: Right-click on Pom.xml, navigate to Maven > Show Effective POM.
+    - In other IDEs like Eclipse or NetBeans, similar options may exist to view the effective pom.
+  - **Contents**:
+    - The effective pom includes all configurations from Pom.xml along with default settings provided by Maven.
+    - It encompasses plugin repositories, default plugins, and other configurations not explicitly mentioned in Pom.xml.
+  - **Modification**:
+    - Developers should primarily make changes in Pom.xml as modifications automatically reflect in the effective pom.
+    - Directly modifying the effective pom is not recommended as it's generated dynamically by Maven.
