@@ -1,19 +1,41 @@
-package com.rohit.JobApp;
+package com.rohit.JobApp.controller;
 
 import com.rohit.JobApp.model.JobPost;
 import com.rohit.JobApp.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class JobRestController {
     @Autowired
     private JobService service;
-    @GetMapping("/jobPosts")
+    @GetMapping("jobPosts")
     public List<JobPost> getAllJobs(){
         return service.returnAllJobPosts();
+    }
+
+    @GetMapping("/jobPost/{postId}")
+    public JobPost getJob(@PathVariable int postId){
+        return service.getJob(postId);
+    }
+
+    @PostMapping("/jobPost")
+    public JobPost addJob(@RequestBody JobPost jobPost){
+        service.addJobPost(jobPost);
+        return service.getJob(jobPost.getPostId());
+    }
+
+    @PutMapping("/jobPost")
+    public JobPost updateJob(@RequestBody JobPost jobPost) {
+        return service.updateJob(jobPost);
+    }
+
+    @DeleteMapping("/jobPost/{postId}")
+    public String deleteJob(@PathVariable int postId) {
+        service.deleteJob(postId);
+        return "Deleted";
     }
 }
