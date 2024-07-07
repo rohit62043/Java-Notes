@@ -1,4 +1,4 @@
-package com.telusko.springbootrest.aop;
+package com.rohit.JobApp.AOP;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,7 +15,7 @@ public class PerformanceMonitorAspect {
 
 
 
-    @Around("execution (* com.telusko.springbootrest.service.JobService.*(..))")
+    @Around("execution (* com.rohit.JobApp.service.JobService.*(..))")
     public Object monitorTime(ProceedingJoinPoint jp) throws Throwable {
 
         long start=System.currentTimeMillis();
