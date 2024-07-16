@@ -19,9 +19,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> postUser(User user) {
+    public User postUser(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
-        return userRepository.findById(user.getId());
+        return user;
     }
 }
